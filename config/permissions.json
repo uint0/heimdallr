@@ -1,0 +1,22 @@
+{
+    "resources": {
+        "arkhost": {
+            "host": "13.13.13.13",
+            "ports": ["6000", "6001"]
+        },
+        "arkadmin": {
+            "host": "13.13.13.13",
+            "ports": ["8000,9000"]
+        }
+    },
+    "tokens": [
+        {
+            "token": "HelloWorldUser",
+            "resources": ["arkhost"]
+        },
+        {
+            "token": "HelloWorldAdmin",
+            "resources": ["arkhost", "arkadmin"]
+        }
+    ]
+}
