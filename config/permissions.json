@@ -1,22 +1,22 @@
 {
     "resources": {
-        "arkhost": {
+        "webdev": {
             "host": "13.13.13.13",
-            "ports": ["6000", "6001"]
+            "ports": ["8080", "8000"]
         },
-        "arkadmin": {
+        "administration": {
             "host": "13.13.13.13",
-            "ports": ["8000,9000"]
+            "ports": ["22"]
         }
     },
     "tokens": [
         {
             "token": "HelloWorldUser",
-            "resources": ["arkhost"]
+            "resources": ["webdev"]
         },
         {
             "token": "HelloWorldAdmin",
-            "resources": ["arkhost", "arkadmin"]
+            "resources": ["webdev", "administration"]
         }
     ]
 }
