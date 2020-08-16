@@ -3,8 +3,16 @@ import json
 
 DEFAULT_ACCESS = 60*60*24*7  # 1 week
 
-def process_tokens(perm_file, refresh=DEFAULT_ACCESS):
-    parsed = json.load(open(perm_file))
+def load_configuration(config_file):
+    parsed = json.load(open(config_file))
+    tokens = process_tokens(
+        parsed['permissions'],
+        refresh=parsed['refresh'] if 'refrersh' in parsed else DEFAULT_ACCESS
+    )
+
+    return parsed['name'], tokens
+
+def process_tokens(parsed, refresh=DEFAULT_ACCESS):
     resource_map = parsed['resources']
     token_map = parsed['tokens']
 
@@ -19,12 +27,12 @@ def process_tokens(perm_file, refresh=DEFAULT_ACCESS):
         }
     return tokens
 
-tokens = process_tokens('../config/permissions.json')
+name, tokens = load_configuration('../config/configuration.json')
 
 class HeimdallrController:
     def on_get(self, req, resp):
         resp.media = {
-            'name': 'ark.tet'
+            'name': name
         }
 
 class TokenController:
