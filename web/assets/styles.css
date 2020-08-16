@@ -1,0 +1,76 @@
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select,textarea{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}td:not([align]),th:not([align]){text-align:left}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to left, #2193b0, #6dd5ed);
+}
+
+.card-3 {
+    width: 33vw;
+    background-color: #fff;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-3 .card-body {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-3 footer {
+    margin-top: 4em !important;
+}
+
+.card-3 .main-content {
+    margin-top: 2em !important;
+}
+
+input#token {
+    font-family: monospace;
+    border-radius: 0;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+label {
+    font-weight: 600;
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+.loading-spinner.init-spinner {
+    font-size: 1.5em;
+}
+
+.btn-prev:before {
+    content: "\ea40";
+    font-family: 'icomoon';
+    line-height: 1;
+    font-size: 0.75em;
+    margin-right: 0.5em;
+}
+.btn-next:after {
+    content: "\ea3c";
+    font-family: 'icomoon';
+    line-height: 1;
+    font-size: 0.75em;
+    margin-left: 0.5em;
+}
+
+.feedback i[class^="icon-"] {
+    font-size: 0.85em;
+    margin-right: 0.5em;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0); }
+    100% {transform: rotate(360deg);}
+}
