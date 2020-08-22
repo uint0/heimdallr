@@ -50,14 +50,14 @@ class TokenController:
             return
 
         success = False
+        remote_ip = req.access_route[0]
         if 'dryrun' not in req.media or not req.media['dryrun']:
+            default_adapter.realise(tokens[req.media['token']]['access'], remote_ip)
             success = True
-        else:
-            default_adapter.realise()
         
         resp.status = falcon.HTTP_200
         resp.media = {
-            'requester': req.remote_addr,
+            'requester': remote_ip,
             'token': tokens[req.media['token']],
             'access': {'provision': success}
         }
