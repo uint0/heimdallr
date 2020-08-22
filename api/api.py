@@ -1,13 +1,15 @@
+import adapters.ufw as a_ufw
 import falcon
 import json
 
 DEFAULT_ACCESS = 60*60*24*7  # 1 week
+default_adapter = a_ufw
 
 def load_configuration(config_file):
     parsed = json.load(open(config_file))
     tokens = process_tokens(
         parsed['permissions'],
-        refresh=parsed['refresh'] if 'refrersh' in parsed else DEFAULT_ACCESS
+        refresh=parsed['refresh'] if 'refersh' in parsed else DEFAULT_ACCESS
     )
 
     return parsed['name'], tokens
@@ -50,6 +52,8 @@ class TokenController:
         success = False
         if 'dryrun' not in req.media or not req.media['dryrun']:
             success = True
+        else:
+            default_adapter.realise()
         
         resp.status = falcon.HTTP_200
         resp.media = {
