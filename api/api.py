@@ -62,13 +62,6 @@ class TokenController:
             'access': {'provision': success}
         }
 
-class HandleCORS(object):
-    def process_request(self, req, resp):
-        resp.set_header('Access-Control-Allow-Origin', '*')
-        resp.set_header('Access-Control-Allow-Methods', '*')
-        resp.set_header('Access-Control-Allow-Headers', '*')
-        resp.set_header('Access-Control-Max-Age', 1728000)  # 20 days
-
-api = falcon.API(middleware=[HandleCORS()])
-api.add_route('/token', TokenController())
-api.add_route('/heimdallr', HeimdallrController())
+api = falcon.API()
+api.add_route('/api/token', TokenController())
+api.add_route('/api/heimdallr', HeimdallrController())

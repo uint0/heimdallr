@@ -1,7 +1,7 @@
 (async function() {
     "use strict";
 
-    const API_URL = 'http://localhost:8000';
+    const API_URL = '/api';
 
     async function getMetaData() {
         return await fetch(`${API_URL}/heimdallr`);
